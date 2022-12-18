@@ -1,7 +1,7 @@
 'use strict';
 
 var mongoose = require("mongoose");
-var MONGODB_URL = "mongodb+srv://arimongodev:9FKbFZC2kKlTiuZz@cluster0.3utuxwz.mongodb.net/ngBookStore?retryWrites=true&w=majority";
+var MONGODB_URL = "mongodb+srv://<user>:<pass>@cluster0.3utuxwz.mongodb.net/ngBookStore?retryWrites=true&w=majority";
 mongoose.connect(MONGODB_URL, { useNewUrlParser: true, useUnifiedTopology: true }).then(() => {
 	console.log("Connected to %s", MONGODB_URL);
 	console.log("App is running ... \n");
