@@ -1,0 +1,24 @@
+<div class="card bg-light">
+    <article class="card-body mx-auto">
+        <form (submit)="createOrder()">
+            <div class="form-group input-group">
+                <input [(ngModel)]="useName" class="form-control" placeholder="Full name" type="text" [ngModelOptions]="{standalone: true}">
+            </div> <!-- form-group// -->
+            <div class="form-group input-group">
+                <input [(ngModel)]="userEmail" class="form-control" placeholder="Email address" type="email" [ngModelOptions]="{standalone: true}">
+            </div> <!-- form-group// -->
+            <div class="form-group input-group">
+                <input [(ngModel)]="userPhone" class="form-control" placeholder="Phone number" type="number" [ngModelOptions]="{standalone: true}">
+            </div> <!-- form-group// -->
+            <div class="form-group input-group">
+                <textarea class="form-control" placeholder="Address" [(ngModel)]="billingAddress" rows="4" [ngModelOptions]="{standalone: true}"></textarea>
+            </div> <!-- form-group end.// -->
+            <div class="form-group input-group">
+                <input class="form-control" [(ngModel)]="billingPincode" placeholder="Pincode" type="number" [ngModelOptions]="{standalone: true}">
+            </div> <!-- form-group// -->
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary btn-block">Place order</button>
+            </div> <!-- form-group// -->
+        </form>
+    </article>
+</div> <!-- card.// -->

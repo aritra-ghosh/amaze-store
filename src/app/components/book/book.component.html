@@ -1,0 +1,25 @@
+<div class="container" *ngIf="book">
+	<div class="row mt-3">
+		<div class="col-md-4 col-sm-4">
+			<img src="{{ book.cover }}" width="100%">
+		</div>
+		<div class="col-md-8 col-sm-8">
+			<h2 class="well">{{ book.title }}</h2>
+			<ul class="bookInfo">
+				<li>Category: {{ book.category }}</li>
+				<li>Author: {{ book.author }}</li>
+				<li>Publisher: {{ book.publisher }}</li>
+			</ul>
+			<br>
+			<div class="price"><strong>&#8377;{{ book.price }}</strong></div>
+			<p>{{ book.description }}</p>
+			<a class="btn btn-success" (click)="addToCart()">Add to cart</a>
+			<a class="btn btn-secondary ml-2" href="/home">Back to list</a>
+			<br/>
+			<div class="alert alert-info mt-2 w-100 " role="alert" *ngIf="addedToCart">
+				Added to your cart. Check out <a href="javascript:void(0)" (click)="moveToCart()" class="alert-link">cart</a>.
+			</div>
+		</div>
+	</div>
+	<p></p>
+</div>

@@ -1,0 +1,42 @@
+<div class="container">
+	<h1 class="well mt-2">Shopping Cart</h1>
+	<a class="btn btn-outline-secondary" (click)="emptyCart()" *ngIf="cartCount > 0">Clear Cart</a>
+	<a class="btn btn-outline-primary" href="/home" *ngIf="!cartCount || cartCount === 0">Browse books</a>
+	<hr>
+	<p *ngIf="shoppingCart.length == 0">Your cart is empty</p>
+	<table class="table table-bordered" *ngIf="shoppingCart.length > 0">
+		<tr>
+			<th>Item</th>
+			<th>Quantity</th>
+			<th>Total</th>
+		</tr>
+		<tr *ngFor="let item of shoppingCart">
+			<td>
+				<img src="{{item.product.cover}}" height="100" />
+				<span class="ml-3">{{ item.product.title }}</span>
+			</td>
+			<td>
+				<a href="javascript:void(0);" (click)="removeFromCart(item);"
+					class="btn btn-outline-primary btn-sm">-</a>
+				<span class="ml-3 mr-3">{{ item.quantity }}</span>
+				<a href="javascript:void(0);" (click)="addToCart(item)" class="btn btn-outline-primary btn-sm">+</a>
+			</td>
+			<td>{{ item.total }}</td>
+		</tr>
+	</table>
+	<div class="row">
+		<div class="col-6 text-left total">
+			<ng-container *ngIf="shoppingCart.length > 0">Total: &#8377;{{ total.toFixed(2) }}</ng-container>
+		</div>
+		<div class="col-6 text-right" *ngIf="shoppingCart.length > 0">
+			<a *ngIf="!ordering" herf="javascript:void(0);" (click)="toOrder()" class="btn btn-outline-primary">Place
+				Order</a>
+		</div>
+	</div>
+	<div class="pt-2" *ngIf="ordering">
+		<app-order-create (onOrderPlacingSuccess)="performOrderPlaceActions($event)"></app-order-create>
+	</div>
+	<div class="alert alert-success w-100" role="alert" *ngIf="orderPlaceSuccessMsg && orderPlaceSuccessMsg.length > 0">
+		{{orderPlaceSuccessMsg}}
+	</div>
+</div>
